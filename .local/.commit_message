@@ -1,0 +1,15 @@
+Match TTS implementation exactly with AplicativoMaikon original
+
+Backend:
+- Use --file (temp file) instead of --text, matching original
+- Same HTML stripping and text cleanup
+- Same 4096 char limit and 45s timeout
+- Same pt-BR-FranciscaNeural voice without rate override
+- Proper cleanup of temp files in finally block
+
+Frontend:
+- AbortController for cancellation (same as original)
+- Content-type verification before playing
+- Blob size check (min 100 bytes)
+- audioEnded guard to prevent double-fire
+- Robust fallback to browser SpeechSynthesis
